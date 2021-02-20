@@ -3,7 +3,7 @@ const bottleApp = {};
 
 //Initialize data from API
 
-bottleApp.apiUrl = 'https://api.yelp.com/v3/businesses/search';
+bottleApp.apiUrl = 'https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search';
 bottleApp.apiKey = 'Bearer JZYgjDAWC3xGXOVGoquhJgKezVKcCSmnyM5CP-5t0TwLcAjVQGNuGwolK6fnWp2s0wvBtkyAYM-ijdEBQ5eTiynp-dgC3lfLQ6fHFPxuwfYf76n6JBXwX-CSw8S_X3Yx'
 
 bottleApp.headers = new Headers();
@@ -22,12 +22,12 @@ bottleApp.getRestaurants = () => {
     })
 
     fetch(url, bottleApp.requestOptions)
-    .then((res) => {
-        console.log(res);
-    })
-    
-    
-    
+        .then((res) => {
+            return res.json();
+        })
+        .then((jsonRes) => {
+            console.log(jsonRes);
+        })
 }
 
 bottleApp.getRestaurants();
