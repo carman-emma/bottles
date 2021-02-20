@@ -235,6 +235,31 @@ html {
   overflow: hidden;
 }
 
+html {
+  font-size: 62.5%;
+}
+
 body {
   background-color: cornsilk;
+}
+
+main {
+  height: 95vh;
+}
+
+.wrapper {
+  max-width: 1280px;
+  width: 85%;
+  margin: 0 auto;
+  border: 1px solid red;
+}
+
+h1 {
+  font-size: 5rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+footer {
+  text-align: center;
 }
