@@ -33,6 +33,23 @@ bottleApp.getRestaurants = (userAddress) => {
 
     }
     
+    // create a method (userLocation) to update the variable (userAddress) based on the users input
+    // user address value passed into (getRestaurants) method of location parameter
+    bottleApp.userLocation = () => {
+        //     Query input text
+        const form = document.querySelector('form');
+        //     Create an event listener on submit
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const inputEl = document.querySelector('input');
+            //     Store user input value 
+            const userInput = inputEl.value;
+            //     Set input to an empty string
+            inputEl.value = '';
+    
+            bottleApp.getRestaurants(userInput);
+        }) 
+    }
     
     // create a method to (displayResults)
     bottleApp.displayResults = (dataFromApi) => {
@@ -68,28 +85,6 @@ bottleApp.getRestaurants = (userAddress) => {
 //     append <p> tags - phone number to li
 //     append li to ul
 
-
-    // create a method (userLocation) to update the variable (userAddress) based on the users input
-    // user address value passed into (getRestaurants) method of location parameter
-    bottleApp.userLocation = () => {
-        //     Query input text
-        const form = document.querySelector('form');
-        //     Create an event listener on submit
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const inputEl = document.querySelector('input');
-            //     Store user input value 
-            const userInput = inputEl.value;
-            //     Set input to an empty string
-            inputEl.value = '';
-
-            bottleApp.getRestaurants(userInput);
-        }) 
-    }
-    
-    
-    
-    
 
 // create init method to kick off the setup of the application
 bottleApp.init = () => {
