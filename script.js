@@ -3,24 +3,19 @@ const bottleApp = {};
 
 //Initialize data from API
 
-bottleApp.apiUrl = 'https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search';
+bottleApp.apiUrl = 'https://api.yelp.com/v3/businesses/search';
 bottleApp.apiKey = 'Bearer JZYgjDAWC3xGXOVGoquhJgKezVKcCSmnyM5CP-5t0TwLcAjVQGNuGwolK6fnWp2s0wvBtkyAYM-ijdEBQ5eTiynp-dgC3lfLQ6fHFPxuwfYf76n6JBXwX-CSw8S_X3Yx'
 
-bottleApp.headers = new Headers();
-bottleApp.headers.append('Authorization', bottleApp.apiKey);
-bottleApp.requestOptions = {
-    method: 'GET',
-    headers: bottleApp.headers,
-    redirect: 'follow'
-};
-
 bottleApp.getRestaurants = (userAddress) => {
-    const url = new URL(bottleApp.apiUrl);
+    const url = new URL('http://proxy.hackeryou.com');
     url.search = new URLSearchParams({
-        term: 'cocktails wine',
-        location: userAddress,
-        sort_by: 'distance',
-        limit: 6,
+        reqUrl: bottleApp.apiUrl,
+        'params[key]': bottleApp.apiKey,
+        'params[term]': 'cocktails wine',
+        'params[location]': userAddress,
+        'params[sort_by]': 'distance',
+        'params[limit]': 6,
+        'proxyHeaders[Authorization]': bottleApp.apiKey, 
     })
 
     fetch(url, bottleApp.requestOptions)
@@ -72,7 +67,7 @@ bottleApp.getRestaurants = (userAddress) => {
 
         const yelpLink = document.createElement('a');
         yelpLink.classList.add('yelp-link');
-        yelpLink.href(datum.url);
+        yelpLink.href = datum.url
 
         h2.textContent = datum.name;
         pPhone.innerHTML = `<a href='tel:${datum.phone}'>${datum.display_phone}</a>`;
