@@ -28,13 +28,49 @@ bottleApp.getRestaurants = (userAddress) => {
             return res.json();
         })
         .then((jsonRes) => {
-            console.log(jsonRes);
+            bottleApp.displayResults(jsonRes);
         })
 
     }
     
     
-    // create method getLocation(userLocation) to access api data  
+    // create a method to (displayResults)
+    bottleApp.displayResults = (dataFromApi) => {
+        // take data from API and iterate through it with forEach
+        dataFromApi.forEach((datum) => {
+        //     for each object in API will need to create an <li> 
+        const liEl = document.createElement('li');
+        //     create a <h2> for restaurant name
+        const h2 = document.createElement('h2');
+        // const restaurant = h2.classList.add('restaurantName');
+        //     create a <img> for photo 
+        const imgEl = document.createElement('img');
+        //     create a <p> for restaurant phone number
+        const pPhone = document.createElement('p');
+        //     create a <p> for restaurant distance
+        const pDistance = document.createElement('p');
+        //     create a <p> for restaurant address
+        const pAddress = document.createElement('p');
+        
+        console.log(datum);
+        
+    })  
+    
+}
+
+// bottleApp.displayResults();
+//     add content for img src and alt attributes
+//          divide the value distance by 1000 to get km 
+//     append h2 to li
+//     append img to li
+//     append <p> tag - address to li
+//     append <p> tag - distance to li
+//     append <p> tags - phone number to li
+//     append li to ul
+
+
+    // create a method (userLocation) to update the variable (userAddress) based on the users input
+    // user address value passed into (getRestaurants) method of location parameter
     bottleApp.userLocation = () => {
         //     Query input text
         const form = document.querySelector('form');
@@ -51,32 +87,14 @@ bottleApp.getRestaurants = (userAddress) => {
         }) 
     }
     
-    bottleApp.userLocation();
-
     
-// create a method (getUserLocation) to update the variable (userLocation) based on the users input
-//      user address value passed into GET function of location parameter
-
-// create a method to (displayResults)
-//     take data from API
-//     iterate through it with forEach
-//     for each object in API will need to create an <li> 
-//     create a <h2> for restaurant name
-//     create a <img> for photo 
-//     add content for img src and alt attributes
-//     create a <p> for restaurant phone number
-//     create a <p> for restaurant address
-//     create a <p> for restaurant distance
-//          divide the value distance by 1000 to get km 
-//     append h2 to li
-//     append img to li
-//     append <p> tag - distance to li
-//     append <p> tag - address to li
-//     append <p> tags - phone number to li
-//     append li to ul
+    
+    
 
 // create init method to kick off the setup of the application
-//         call getLocation
-//         call display
-
+bottleApp.init = () => {
+    //         call getLocation
+    bottleApp.userLocation();   
+}
 // call init
+bottleApp.init();
