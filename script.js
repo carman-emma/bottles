@@ -86,6 +86,56 @@ bottleApp.getRestaurants = (userAddress) => {
     
 }
 
+bottleApp.carousel = () => {
+    const slider = document.querySelector('.slider');
+    const innerSlider = document.querySelector('.slider-inner');
+
+    let pressed = false;
+    let startX;
+    let x;
+
+    slider.addEventListener('mousedown', (e) => {
+        pressed = true;
+        startX = e.offsetX - innerSlider.offsetLeft;
+        slider.style.cursor = 'grabbing';
+    })
+
+    slider.addEventListener('mouseenter', () => {
+        slider.style.cursor = 'grab';
+    })
+
+    slider.addEventListener('mouseup', () => {
+        slider.style.cursor = 'grab';
+    })
+
+    window.addEventListener('mouseup', () => {
+        pressed = false;
+    })
+
+    slider.addEventListener('mousemove', (e) => {
+        if (!pressed) return;
+        e.preventDefault();
+
+        x = e.offsetX 
+        innerSlider.style.left = `${x - startX}px`;
+    })
+
+    function checkBoundary () {
+        let outer = slider.getBoundingClientRect();
+        let inner = innerSlider.getBoundingClientRect();
+
+        if (parseInt(innerSlider.style.left) > 0) {
+            innerSlider.style.left = '0px';
+        } else if (inner.right < outer.right) {
+            innerSlider.style.left = `-${inner.width - outer.width}px`;
+        }
+        
+    }
+
+    checkBoundary();
+}
+
+
 bottleApp.staffPicks = [
     tommyWine = {
         name: `Tommy's Wine Bar`,
@@ -124,12 +174,11 @@ bottleApp.staffPicks = [
         url: 'http://www.bernhardtstoronto.com'
     }
 ]
-
-console.log(bottleApp.staffPicks);
 // create init method to kick off the setup of the application
 bottleApp.init = () => {
     //         call getLocation
     bottleApp.userLocation();   
+    bottleApp.carousel();
 }
 // call init
 bottleApp.init();

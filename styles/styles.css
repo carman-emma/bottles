@@ -301,6 +301,7 @@ li {
 
 .slide-image {
   height: 100%;
+  min-width: 200px;
   background: coral;
   padding: 15px;
 }
