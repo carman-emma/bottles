@@ -41,37 +41,51 @@ bottleApp.getRestaurants = (userAddress) => {
         //     Create an event listener on submit
         form.addEventListener('submit', (e) => {
             e.preventDefault();
+            const ulEl = document.querySelector('ul');
+            ulEl.innerHTML = '';
             const inputEl = document.querySelector('input');
             //     Store user input value 
             const userInput = inputEl.value;
             //     Set input to an empty string
             inputEl.value = '';
-    
             bottleApp.getRestaurants(userInput);
         }) 
     }
     
     // create a method to (displayResults)
     bottleApp.displayResults = (dataFromApi) => {
-        console.log(dataFromApi);
+        const ulEl = document.querySelector('ul');
         // take data from API and iterate through it with forEach
         dataFromApi.forEach((datum) => {
         //     for each object in API will need to create an <li> 
         const liEl = document.createElement('li');
         //     create a <h2> for restaurant name
         const h2 = document.createElement('h2');
-        // const restaurant = h2.classList.add('restaurantName');
-        //     create a <img> for photo 
-        const imgEl = document.createElement('img');
-        //     create a <p> for restaurant phone number
+
         const pPhone = document.createElement('p');
-        //     create a <p> for restaurant distance
+        pPhone.classList.add('phone'); 
+
         const pDistance = document.createElement('p');
-        //     create a <p> for restaurant address
+        pDistance.classList.add('distance');
+        
         const pAddress = document.createElement('p');
+
+        const yelpLink = document.createElement('a');
+        yelpLink.classList.add('yelp-link');
+        yelpLink.href(datum.url);
+
+        h2.textContent = datum.name;
+        pPhone.innerHTML = `<a href='tel:${datum.phone}'>${datum.display_phone}</a>`;
+        pDistance.textContent = (datum.distance / 1000).toFixed(0) + ` meters away!`;
+        pAddress.innerHTML =  `<address>${datum.location.address1}</address>`;
+        yelpLink.innerHTML = `<i class="fas fa-external-link-alt"></i>`;
         
-        console.log(datum);
-        
+        ulEl.appendChild(liEl);
+        liEl.appendChild(h2)
+            .appendChild(pDistance)
+            .appendChild(pPhone)
+            .appendChild(pAddress)
+            .appendChild(yelpLink);
     })  
     
 }
