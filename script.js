@@ -54,6 +54,7 @@ bottleApp.getRestaurants = (userAddress) => {
         dataFromApi.forEach((datum) => {
         //     for each object in API will need to create an <li> 
         const liEl = document.createElement('li');
+        liEl.classList.add('slide-image');
         //     create a <h2> for restaurant name
         const h2 = document.createElement('h2');
 
