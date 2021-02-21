@@ -28,9 +28,9 @@ bottleApp.getRestaurants = (userAddress) => {
             return res.json();
         })
         .then((jsonRes) => {
-            bottleApp.displayResults(jsonRes);
+            const { businesses } = jsonRes
+            bottleApp.displayResults(businesses);
         })
-
     }
     
     // create a method (userLocation) to update the variable (userAddress) based on the users input
@@ -53,6 +53,7 @@ bottleApp.getRestaurants = (userAddress) => {
     
     // create a method to (displayResults)
     bottleApp.displayResults = (dataFromApi) => {
+        console.log(dataFromApi);
         // take data from API and iterate through it with forEach
         dataFromApi.forEach((datum) => {
         //     for each object in API will need to create an <li> 
