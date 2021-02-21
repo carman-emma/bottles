@@ -85,6 +85,46 @@ bottleApp.getRestaurants = (userAddress) => {
     
 }
 
+bottleApp.staffPicks = [
+    tommyWine = {
+        name: `Tommy's Wine Bar`,
+        phone: '+1 416-530-1430',
+        address: '1977 Dundas St West',
+        url: 'https://www.instagram.com/tommyswinebarto/?hl=en'
+    },
+    oldTown = {
+        name: 'Oldtown Bodega',
+        phone: '',
+        address: '402 King St East',
+        url: 'https://www.instagram.com/oldtownbodega/?hl=en'
+    },
+    grapeGlass = {
+        name: 'Grape Glass',
+        phone: '+1 416-546-2151',
+        address: '1247 Dundas St West',
+        url: 'https://www.grapewitches.com/grape-glass'
+    },
+    donnas = {
+        name: `Donna's`,
+        phone: '+1 416-536-1414',
+        address: '827 Lansdowne Ave',
+        url: 'https://donnas.ca/'
+    },
+    paradiseGrapevine = {
+        name: 'Paradise Grapevine',
+        phone: '+1 416-536-7178',
+        address: '841 Bloor St West',
+        url: 'https://www.paradisegrapevine.com/'
+    },
+    bernhardts = {
+        name: `Bernhardt's`,
+        phone: `+1 416-530-0008`,
+        address: '202 Dovercourt Rd',
+        url: 'http://www.bernhardtstoronto.com'
+    }
+]
+
+console.log(bottleApp.staffPicks);
 // create init method to kick off the setup of the application
 bottleApp.init = () => {
     //         call getLocation
