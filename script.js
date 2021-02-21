@@ -12,7 +12,7 @@ bottleApp.getRestaurants = (userAddress) => {
         reqUrl: bottleApp.apiUrl,
         'params[key]': bottleApp.apiKey,
         'params[term]': 'cocktails wine',
-        'params[location]': userAddress,
+        'params[location]': userAddress + ' Toronto',
         'params[sort_by]': 'distance',
         'params[limit]': 6,
         'proxyHeaders[Authorization]': bottleApp.apiKey, 
@@ -84,17 +84,6 @@ bottleApp.getRestaurants = (userAddress) => {
     })  
     
 }
-
-// bottleApp.displayResults();
-//     add content for img src and alt attributes
-//          divide the value distance by 1000 to get km 
-//     append h2 to li
-//     append img to li
-//     append <p> tag - address to li
-//     append <p> tag - distance to li
-//     append <p> tags - phone number to li
-//     append li to ul
-
 
 // create init method to kick off the setup of the application
 bottleApp.init = () => {
