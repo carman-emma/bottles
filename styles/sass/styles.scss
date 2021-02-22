@@ -3,7 +3,7 @@
 * {
     padding: 0;
     margin: 0;
-    
+    border: solid 1px red;
 }
 
 html {
@@ -15,6 +15,16 @@ body {
 }
 main {
     height: 95vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+img {
+    max-width: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 .wrapper {
@@ -27,10 +37,31 @@ main {
 
 h1 {
     font-size: 5rem;
-    margin: 0 auto;
+    margin: 20px;
     text-align: center;
 }
 
+h2 {
+    margin-bottom: 20px;
+}
+
+legend {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    width: 30vw;
+    margin: 20px;
+    padding: 10px;
+    text-align: center;
+    border-radius: 40px;
+}
+
+button {
+    width: 50%;
+    margin: 0 auto;
+}
 a {
     pointer-events: auto;
     cursor: pointer;
@@ -43,33 +74,36 @@ li {
     
 }
 
-.slider {
-    border: 3px solid blue;
-    position: relative;
-    margin: auto;
-    top: 15%;
-    width: 60%;
-    height: 200px;
-    overflow: hidden;
-}
+// .slider {
+//     border: 3px solid blue;
+//     margin: 80px;
+//     width: 60%;
+//     height: 200px;
+//     overflow: hidden;
+// }
 
-.slider-inner {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 200%;
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 15px;
-    pointer-events: none;
-}
+// .slider-inner {
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     height: 100%;
+//     width: 200%;
+//     display: grid;
+//     grid-template-columns: repeat(7, 1fr);
+//     gap: 15px;
+//     pointer-events: none;
+// }
 
-.slide-image {
-    height: 100%;
-    min-width: 200px;
-    background: coral;
-    padding: 15px;
+// .slide-image {
+//     height: 100%;
+//     min-width: 200px;
+//     background: coral;
+//     padding: 15px;
+// }
+
+.secret {
+    max-width: 100px;
+    height: auto;
 }
 
 footer {
