@@ -179,11 +179,11 @@ bottleApp.staffPicks = [
 bottleApp.showSecrets = () => {
     const bottle = document.querySelector('img');
     bottle.addEventListener('mouseover', (e) => {
-        bottle.src = './assets/bottle-02.png';
+        bottle.src = './assets/bottles-logo-full.png';
     })
 
     bottle.addEventListener('mouseout', (e) => {
-        bottle.src = './assets/bottle-01.png';
+        bottle.src = './assets/bottles-logo-empty.png';
     })
 }
 
