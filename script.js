@@ -175,10 +175,24 @@ bottleApp.staffPicks = [
         url: 'http://www.bernhardtstoronto.com'
     }
 ]
+
+bottleApp.showSecrets = () => {
+    const bottle = document.querySelector('img');
+    bottle.addEventListener('mouseover', (e) => {
+        bottle.src = './assets/bottle-02.png';
+    })
+
+    bottle.addEventListener('mouseout', (e) => {
+        bottle.src = './assets/bottle-01.png';
+    })
+}
+
+
 // create init method to kick off the setup of the application
 bottleApp.init = () => {
     //         call getLocation
-    bottleApp.userLocation();   
+    bottleApp.showSecrets();
+    bottleApp.userLocation();  
     bottleApp.carousel();
 }
 // call init
