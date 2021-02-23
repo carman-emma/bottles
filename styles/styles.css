@@ -238,7 +238,6 @@ html {
 * {
   padding: 0;
   margin: 0;
-  border: solid 1px red;
 }
 
 html {
@@ -281,13 +280,23 @@ img {
 }
 
 h1 {
-  font-size: 5rem;
   margin: 20px;
   text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10rem;
+  letter-spacing: 5px;
+  color: white;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+  text-shadow: 4px 4px #FA493C, 8px 8px #F97673;
 }
 
 h2 {
   margin-bottom: 20px;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1.7rem;
+  font-weight: 100;
+  font-style: italic;
 }
 
 legend {
@@ -323,11 +332,50 @@ li {
   list-style-type: none;
 }
 
+.slider {
+  border: 3px solid blue;
+  margin: 80px;
+  width: 60%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.slider-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 200%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[7];
+      grid-template-columns: repeat(7, 1fr);
+  gap: 15px;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.slide-image {
+  height: 100%;
+  min-width: 200px;
+  background: coral;
+  padding: 15px;
+}
+
 .secret {
   max-width: 100px;
   height: auto;
 }
 
 footer {
-  text-align: center;
+  height: 5vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
