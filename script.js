@@ -25,11 +25,13 @@ bottleApp.getRestaurants = (userAddress) => {
         .then((jsonRes) => {
             const { businesses } = jsonRes
             bottleApp.displayResults(businesses);
+            bottleApp.slider();
         })
     }
     
 // create a method (userLocation) to update the variable (userAddress) based on the users input
 // user address value passed into (getRestaurants) method of location parameter
+
 bottleApp.userLocation = () => {
     //     Query input text
     const form = document.querySelector('form');
@@ -51,10 +53,11 @@ bottleApp.userLocation = () => {
 bottleApp.displayResults = (dataFromApi) => {
     const ulEl = document.querySelector('ul');
     // take data from API and iterate through it with forEach
+
     dataFromApi.forEach((datum) => {
     //     for each object in API will need to create an <li> 
     const liEl = document.createElement('li');
-    liEl.classList.add('slide-image');
+    // liEl.classList.add('slide-image');
     //     create a <h2> for restaurant name
     const h2 = document.createElement('h2');
 
@@ -75,17 +78,20 @@ bottleApp.displayResults = (dataFromApi) => {
     pDistance.textContent = (datum.distance / 1000).toFixed(0) + ` meters away!`;
     pAddress.innerHTML =  `<address>${datum.location.address1}</address>`;
     yelpLink.innerHTML = `<i class="fas fa-external-link-alt"></i>`;
-        
+    
+
     ulEl.appendChild(liEl);
     liEl.appendChild(h2)
         .appendChild(pDistance)
         .appendChild(pPhone)
         .appendChild(pAddress)
         .appendChild(yelpLink);
-})  
+    })  
+
     
 }
 
+//old grabby carousel
 bottleApp.carousel = () => {
     const slider = document.querySelector('.slider');
     const innerSlider = document.querySelector('.slider-inner');
@@ -134,6 +140,51 @@ bottleApp.carousel = () => {
         
     }
 
+}
+
+bottleApp.slider = () => {
+    const slider = document.querySelector('.slider');
+    
+    let prev;
+    let current;
+    let next;
+
+    const slideContainer = document.querySelector('.slider-inner');
+    const prevButton = document.querySelector('.go-back');
+    const nextButton = document.querySelector('.go-next');
+
+    function startSlider () {
+        current = document.querySelector('.slider-inner').firstElementChild;
+        prev = current.previousElementSibling || slideContainer.lastElementChild;
+        next = current.nextElementSibling || slideContainer.firstElementChild;
+    }
+
+    function addClasses () {
+        current.classList.add('current');
+        prev.classList.add('prev');
+        next.classList.add('next');
+    }
+
+    function move (direction) {
+        const classesToRemove = ['prev', 'current', 'next'];
+        [ prev, current, next ].forEach((el) => {
+            el.classList.remove(...classesToRemove);
+        });
+
+        if (direction === 'back') {
+            [ prev, current, next ] = [ prev.previousElementSibling || slideContainer.lastElementChild, prev, current ]
+        } else {
+            [ prev, current, next ] = [ current, next, next.nextElementSibling || slideContainer.firstElementChild ];
+        }
+
+        addClasses();
+    
+    }
+    
+    prevButton.addEventListener('click', () => move('back'));
+    nextButton.addEventListener('click', move);
+
+    startSlider();
 }
 
 
@@ -193,7 +244,8 @@ bottleApp.init = () => {
     //         call getLocation
     bottleApp.showSecrets();
     bottleApp.userLocation();  
-    bottleApp.carousel();
+    // bottleApp.carousel(); // old carousel
+
 }
 // call init
 bottleApp.init();
