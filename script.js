@@ -44,8 +44,10 @@ bottleApp.userLocation = () => {
         //     Store user input value 
         const userInput = inputEl.value;
         //     Set input to an empty string
-        inputEl.value = '';
-        bottleApp.getRestaurants(userInput);
+        if(userInput.trim()) {
+            inputEl.value = '';
+            bottleApp.getRestaurants(userInput);
+        };
     }) 
 }
     
@@ -57,91 +59,37 @@ bottleApp.displayResults = (dataFromApi) => {
     dataFromApi.forEach((datum) => {
     //     for each object in API will need to create an <li> 
     const liEl = document.createElement('li');
-    // liEl.classList.add('slide-image');
     //     create a <h2> for restaurant name
     const h2 = document.createElement('h2');
-
+    
     const pPhone = document.createElement('p');
     pPhone.classList.add('phone'); 
-
+    
     const pDistance = document.createElement('p');
     pDistance.classList.add('distance');
-        
+    
     const pAddress = document.createElement('p');
-
+    
     const yelpLink = document.createElement('a');
     yelpLink.classList.add('yelp-link');
     yelpLink.href = datum.url
-
+    
     h2.textContent = datum.name;
     pPhone.innerHTML = `<a href='tel:${datum.phone}'>${datum.display_phone}</a>`;
-    pDistance.textContent = (datum.distance / 1000).toFixed(0) + ` meters away!`;
+    pDistance.textContent = (datum.distance / 1000).toFixed(0) + ` m away!`;
     pAddress.innerHTML =  `<address>${datum.location.address1}</address>`;
     yelpLink.innerHTML = `<i class="fas fa-external-link-alt"></i>`;
     
-
+    
     ulEl.appendChild(liEl);
-    liEl.appendChild(h2)
-        .appendChild(pDistance)
-        .appendChild(pPhone)
-        .appendChild(pAddress)
-        .appendChild(yelpLink);
+    liEl.append(h2, pDistance, pPhone, pAddress, yelpLink);
     })  
 
     
 }
 
-//old grabby carousel
-bottleApp.carousel = () => {
-    const slider = document.querySelector('.slider');
-    const innerSlider = document.querySelector('.slider-inner');
 
-    let pressed = false;
-    let startX;
-    let x;
-
-    slider.addEventListener('mousedown', (e) => {
-        pressed = true;
-        startX = e.offsetX - innerSlider.offsetLeft;
-        slider.style.cursor = 'grabbing';
-    })
-
-    slider.addEventListener('mouseenter', () => {
-        slider.style.cursor = 'grab';
-    })
-
-    slider.addEventListener('mouseup', () => {
-        slider.style.cursor = 'grab';
-    })
-
-    window.addEventListener('mouseup', () => {
-        pressed = false;
-    })
-
-    slider.addEventListener('mousemove', (e) => {
-        if (!pressed) return;
-        e.preventDefault();
-
-        x = e.offsetX 
-        innerSlider.style.left = `${x - startX}px`;
-        checkBoundary();
-    })
-
-    function checkBoundary () {
-        let outer = slider.getBoundingClientRect();
-        let inner = innerSlider.getBoundingClientRect();
-        console.log('outer:', outer);
-        console.log('inner:', inner);
-        if (parseInt(innerSlider.style.left) > 0) {
-            innerSlider.style.left = '0px';
-        } else if (inner.right < outer.right) {
-            innerSlider.style.left = `-${inner.width - outer.width}px`;
-        }
-        
-    }
-
-}
-
+//slider
 bottleApp.slider = () => {
     const slider = document.querySelector('.slider');
     
@@ -177,8 +125,8 @@ bottleApp.slider = () => {
             [ prev, current, next ] = [ current, next, next.nextElementSibling || slideContainer.firstElementChild ];
         }
 
-        addClasses();
-    
+    addClasses();
+        
     }
     
     prevButton.addEventListener('click', () => move('back'));
@@ -231,10 +179,12 @@ bottleApp.showSecrets = () => {
     const bottle = document.querySelector('img');
     bottle.addEventListener('mouseover', (e) => {
         bottle.src = './assets/bottles-logo-full.png';
+        bottle.classList.add('animate__animated', 'animate__swing');
     })
 
     bottle.addEventListener('mouseout', (e) => {
         bottle.src = './assets/bottles-logo-empty.png';
+        bottle.classList.remove('animate__animated', 'animate__swing');
     })
 }
 
