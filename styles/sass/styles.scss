@@ -11,19 +11,19 @@ html {
 }
 
 body {
-    background-color: #e3f6ff;
-    font-family: 'Roboto Condensed', sans-serif;
-    color: #1875d1;
+    background-color: $background;
+    font-family: $secondaryFont;
+    color: $darkBlue;
     cursor: url('../assets/blue-blur-cursor-01.png'), default;
-    
+}
+
+a {
+    text-decoration: none;
 }
 
 main {
     height: 95vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    @include flexCenter;
 }
 
 img {
@@ -33,30 +33,31 @@ img {
 }
 
 .wrapper {
-    max-width: 1280px;
-    width: 85%;
     margin: 0 auto;
+    width: 85%;
+    max-width: 1280px;
 }
 
 
 h1 {
-    margin: 20px;
+    margin: 8px;
     text-align: center;
-    font-family: 'Montserrat', sans-serif;
+    font-family: $featureFont;
     font-size: 10rem;
     letter-spacing: 5px;
-    color: white;
-    -webkit-text-stroke-width: 1.2px;
-    -webkit-text-stroke-color: #1666b6;
+    color: $background;
+    -webkit-text-stroke-width: 1.4px;
+    -webkit-text-stroke-color: $darkBlue;
     text-shadow: 4px 4px $darkCoral, 8px 8px $lightCoral;
 }
 
-h2 {
-    margin-bottom: 20px;
-    font-size: 1.8rem;
-    font-weight: 100;
-    font-style: italic;
+.about {
+    position: absolute;
+    top: 50%;
+    margin-bottom: 5px;
+    font-size: 2rem;
     letter-spacing: 1px;
+    font-weight: 100;
 }
 
 legend {
@@ -65,93 +66,123 @@ legend {
 }
 
 input {
+    margin: 10px;
     width: 30vw;
-    margin: 20px 0 15px 0;
+    min-width: 300px;
     padding: 10px;
     text-align: center;
     border-radius: 40px;
-    border: #1875d1 1px solid;
-    font-family: 'Roboto Condensed', sans-serif;
-    font-size: 1.5rem;
+    border: 1px solid $darkBlue;
+    font-family: $secondaryFont;
+    font-size: 1.8rem;
     letter-spacing: 1px;
-    color: #1875d1;
+    color: $darkBlue;
     background: rgb(217,234,255);
     background: linear-gradient(337deg, rgba(217,234,255,0.7) 0%, rgba(255,255,255,0.8) 30%, rgba(217,234,255,0.7) 49%, rgba(181,215,255,0.7) 61%, rgba(255,255,255,0.8) 82%, rgba(217,234,255,0.7) 100%); 
 
     &::placeholder {
-        font-family: 'Roboto Condensed', sans-serif;
-        font-size: 1.5rem;
+        font-family: $secondaryFont;
+        font-size: 1.8rem;
         opacity: 1;
         letter-spacing: 1px;
     }
 
     &:hover {
-    background: rgb(217,234,255);
-    background: linear-gradient(337deg, rgba(217,234,255,0.4) 0%, rgba(255,255,255,0.5) 30%, rgba(217,234,255,0.5) 49%, rgba(181,215,255,0.4) 61%, rgba(255,255,255,0.4) 82%, rgba(217,234,255,0.5) 100%); 
-    outline: none;
-    box-shadow: 0 0 0 1pt #f4ff88;
+        background: rgb(217,234,255);
+        background: linear-gradient(337deg, rgba(217,234,255,0.4) 0%, rgba(255,255,255,0.5) 30%, rgba(217,234,255,0.5) 49%, rgba(181,215,255,0.4) 61%, rgba(255,255,255,0.4) 82%, rgba(217,234,255,0.5) 100%); 
+        outline: none;
+        @include glow;
     }
 
     &:focus {
         outline: none;
-        box-shadow: 0 0 0 1pt #f4ff88;
+        @include glow;
     }
 }
 
 button[type='submit'] {
-    margin: 0 auto;
-    border-radius: 50%;
-    padding: 10px 26px;
-    background-color: white;
-    border: #1875d1 1px solid;
-    font-family: 'Roboto Condensed', sans-serif;
-    font-size: 1.5rem;
-    color: #1875d1;
-    letter-spacing: 1px;
-    box-shadow: 4px 4px #1875d1;
     position: relative;
     top: 0;
     right: 0;
+    margin: 10px auto;
+    border-radius: 50%;
+    padding: 15px 30px;
+
+    font-family: $secondaryFont;
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+    color: $darkBlue;
+
+    background-color: $background;
+    border: 1px solid $darkBlue;
+    box-shadow: 4px 4px $darkBlue;
 
     &:active,
     &:focus {
         top: 3px;
         right: -3px;
-        box-shadow: 2px 2px #1875d1;
-        background-color: #f4ff88;
-        border: #f4ff88 1px solid;
+        background-color: $neon;
+        box-shadow: 2px 2px $darkBlue;
+        border: 1px solid $darkBlue;
         outline: none !important;
     }
     
     &:focus {
-        border: #1875d1 1px solid;
+        border: 1px solid $darkBlue;
     }
 
     &:hover {
-        box-shadow: 0 0 0 1pt #f4ff88, 4px 4px #1875d1;
+        box-shadow: 0 0 4px 5px $neon, 4px 4px $darkBlue;
     }
 }
 
-a {
-    // pointer-events: auto;
-    // cursor: pointer;
-    text-decoration: none;
+
+.slider {
+    position: relative;
+    margin: 5px auto;
+    height: 100vh;
+    width: 60%;
+    // border: 1px solid red;
 }
 
+.slider-inner {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    @include flexCenter;
+}
+
+.go-back,
+.go-next {
+    position: absolute;
+    z-index: 100;
+    height: 100%;
+    width: 33%;
+    border: none;
+    background-color: transparent;
+}
+
+.go-back {
+    cursor: url('../assets/arrow-back.png'), default;
+}
+
+.go-next {
+    right: 0;
+    cursor: url('../assets/arrow-next.png'), default;
+}
 
 li {
     list-style-type: none;
     position: absolute;
     height: 95%;
-    width: 40%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    min-width: 250px;
-    min-height: 250px;
+    width: 50%;
+    @include flexCenter;
+    padding: 20px 50px;
+    min-width: 300px;
+    min-height: 300px;
     max-height: 350px;
+    background-color: $darkest;
+    opacity: 0;
 }
 
 li.prev,
@@ -175,98 +206,66 @@ li.current {
     scale: 1;
 }
 
-li:nth-child(1) {
-    background-color: #001682;
+li:nth-child(6n+1) {
     border-radius: 73% 27% 72% 28% / 32% 64% 36% 68%; 
 }
-li:nth-child(2) {
-    background-color: #0d3179;
+li:nth-child(6n+2) {
     border-radius: 24% 76% 22% 78% / 66% 27% 73% 34%;
 }
-li:nth-child(3) {
-    background-color: #0d3179;
+li:nth-child(6n+3) {
     border-radius: 48% 52% 70% 30% / 43% 63% 37% 57%; 
 }
-li:nth-child(4) {
-    background-color: #120962;
+li:nth-child(6n+4) {
+    
     border-radius: 70% 30% 70% 30% / 43% 71% 29% 57%; 
 }
-li:nth-child(5) {
-    background-color: #053f5e;
+li:nth-child(6n+5) {
     border-radius: 70% 30% 70% 30% / 22% 49% 51% 78%; 
 }
-li:nth-child(6) {
-    background-color: #151965;
+li:nth-child(6n+6) {
     border-radius: 55% 45% 24% 76% / 57% 22% 78% 43%;  
 }
 
-.slider {
-    position: relative;
-    width: 60%;
-    height: 50vh;
-    overflow: hidden;
-    margin: 30px auto;
-    outline: 1px red solid;
-}
-
 .slider-inner {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
+    color: white;
+    h2{
+        margin-bottom: 23px;
+        text-align: center;
+        font-family: $featureFont;
+        font-size: 3.2rem;
+        font-weight: 800;   
+        text-shadow: 0 0 20px $neon;  
+    }
+    p {
+        font-size: 1.7rem;
+        padding: 2px;
+    }
+    a {
+        font-size: 1.7rem;
+        padding-top: 15px;
+        line-height: 2.2rem;
+        color: white;
 
-.go-back,
-.go-next {
-    position: absolute;
-    z-index: 100;
-    height: 100%;
-    width: 33%;
-    border: none;
-    background-color: transparent;
-}
-
-.go-next {
-    right: 0;
+        &:hover,
+        &:focus {
+            color: $neon;
+            font-size: 1.9rem;
+        }
+    }
 }
 
 .secret {
+    margin-bottom: 10px;
     max-width: 100px;
     height: auto;
     transition: scale 0.5s ease;
 
     &:hover {
         scale: 1.5;
+        cursor: url('../assets/sparkles-01.png'), default;
     }
 }
 
-.slider-inner {
-    color: white;
-    h2{
-        font-size: 3.2rem;
-        margin-bottom: 23px;
-        font-weight: 800;   
-    }
-    p {
-        font-size: 1.7rem;
-        padding: 2px;
-        
-    }
-    a {
-        font-size: 1.7rem;
-        padding-top: 15px;
-        color: white;
-
-        &:hover,
-        &:focus {
-            color: #f4ff88;
-        }
-    }
-
-}
 
 
 
@@ -277,8 +276,9 @@ footer {
     align-items: center;
     p {
         font-size: 1.5rem;
+        line-height: 2rem;
         a {
-            color: #1875d1;
+            color: $darkBlue;
 
             &:focus,
             &:hover {

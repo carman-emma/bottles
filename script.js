@@ -1,11 +1,11 @@
-// create an app object
+// app object
 const bottleApp = {};
 
-//Initialize data from API
-
+//API data 
 bottleApp.apiUrl = 'https://api.yelp.com/v3/businesses/search';
 bottleApp.apiKey = 'Bearer JZYgjDAWC3xGXOVGoquhJgKezVKcCSmnyM5CP-5t0TwLcAjVQGNuGwolK6fnWp2s0wvBtkyAYM-ijdEBQ5eTiynp-dgC3lfLQ6fHFPxuwfYf76n6JBXwX-CSw8S_X3Yx'
 
+//API call with queries 
 bottleApp.getRestaurants = (userAddress) => {
     const url = new URL('http://proxy.hackeryou.com');
     url.search = new URLSearchParams({
@@ -29,21 +29,21 @@ bottleApp.getRestaurants = (userAddress) => {
         })
     }
     
-// create a method (userLocation) to update the variable (userAddress) based on the users input
-// user address value passed into (getRestaurants) method of location parameter
-
+// get userLocation from form on submit
 bottleApp.userLocation = () => {
-    //     Query input text
+
     const form = document.querySelector('form');
-    //     Create an event listener on submit
+    
     form.addEventListener('submit', (e) => {
         e.preventDefault();
+
         const ulEl = document.querySelector('ul');
         ulEl.innerHTML = '';
+
         const inputEl = document.querySelector('input');
-        //     Store user input value 
+    
         const userInput = inputEl.value;
-        //     Set input to an empty string
+        
         if(userInput.trim()) {
             inputEl.value = '';
             bottleApp.getRestaurants(userInput);
@@ -51,45 +51,50 @@ bottleApp.userLocation = () => {
     }) 
 }
     
-// create a method to (displayResults)
+//  display API results on the page with query from userLocation
 bottleApp.displayResults = (dataFromApi) => {
     const ulEl = document.querySelector('ul');
-    // take data from API and iterate through it with forEach
 
-    dataFromApi.forEach((datum) => {
-    //     for each object in API will need to create an <li> 
-    const liEl = document.createElement('li');
-    //     create a <h2> for restaurant name
-    const h2 = document.createElement('h2');
-    
-    const pPhone = document.createElement('p');
-    pPhone.classList.add('phone'); 
-    
-    const pDistance = document.createElement('p');
-    pDistance.classList.add('distance');
-    
-    const pAddress = document.createElement('p');
-    
-    const yelpLink = document.createElement('a');
-    yelpLink.classList.add('yelp-link');
-    yelpLink.href = datum.url
-    
-    h2.textContent = datum.name;
-    pPhone.innerHTML = `<a href='tel:${datum.phone}'>${datum.display_phone}</a>`;
-    pDistance.textContent = (datum.distance / 1000).toFixed(0) + ` m away!`;
-    pAddress.innerHTML =  `<address>${datum.location.address1}</address>`;
-    yelpLink.innerHTML = `<i class="fas fa-external-link-alt"></i>`;
-    
-    
-    ulEl.appendChild(liEl);
-    liEl.append(h2, pDistance, pPhone, pAddress, yelpLink);
+    dataFromApi.forEach((datum, index) => {
+        
+        const liEl = document.createElement('li');
+
+        const h2 = document.createElement('h2');
+        
+        const pPhone = document.createElement('p');
+        pPhone.classList.add('phone'); 
+        
+        const pDistance = document.createElement('p');
+        pDistance.classList.add('distance');
+        
+        const pAddress = document.createElement('p');
+        
+        const yelpLink = document.createElement('a');
+        yelpLink.classList.add('yelp-link');
+        yelpLink.href = datum.url
+        
+        h2.textContent = datum.name;
+        pPhone.innerHTML = `<a href='tel:${datum.phone}'>${datum.display_phone}</a>`;
+        pDistance.textContent = (datum.distance / 1000).toFixed(0) + ` m away!`;
+        pAddress.innerHTML =  `<address>${datum.location.address1}</address>`;
+        yelpLink.innerHTML = `<i class="fas fa-external-link-alt"></i>`;
+
+        ulEl.appendChild(liEl);
+        liEl.append(h2, pDistance, pPhone, pAddress, yelpLink);
+        
+        if (index === 0) {
+            liEl.classList.add('current');
+        } else if (index === 1) {
+            liEl.classList.add('next');
+        } else if (index === 5) {
+            liEl.classList.add('prev');
+        }
+        
     })  
-
-    
 }
 
 
-//slider
+//Slider to display Results
 bottleApp.slider = () => {
     const slider = document.querySelector('.slider');
     
@@ -125,17 +130,17 @@ bottleApp.slider = () => {
             [ prev, current, next ] = [ current, next, next.nextElementSibling || slideContainer.firstElementChild ];
         }
 
-    addClasses();
-        
+    addClasses();   
+
     }
-    
+
     prevButton.addEventListener('click', () => move('back'));
     nextButton.addEventListener('click', move);
 
     startSlider();
 }
 
-
+// Secret pick bottle shop objects
 bottleApp.staffPicks = [
     tommyWine = {
         name: `Tommy's Wine Bar`,
@@ -189,13 +194,11 @@ bottleApp.showSecrets = () => {
 }
 
 
-// create init method to kick off the setup of the application
+// Functions to kick off the setup of the application
 bottleApp.init = () => {
-    //         call getLocation
     bottleApp.showSecrets();
     bottleApp.userLocation();  
-    // bottleApp.carousel(); // old carousel
-
 }
+
 // call init
 bottleApp.init();

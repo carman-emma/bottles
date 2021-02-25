@@ -1,2 +1,24 @@
+//fonts 
+$featureFont: 'Montserrat', sans-serif;
+$secondaryFont: 'Roboto Condensed', sans-serif;
+
+
 $darkCoral : #FA493C;
 $lightCoral: #F97673;
+$darkBlue: #1875d1;
+$darkest: #03366a;
+$neon: #f4ff88;
+$background: #e3f6ff;
+
+@mixin glow {
+    box-shadow: 0 0 4px 5px $neon;
+}
+
+
+//layout
+@mixin flexCenter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
