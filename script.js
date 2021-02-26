@@ -27,8 +27,8 @@ bottleApp.getRestaurants = (userAddress) => {
             bottleApp.displayResults(businesses);
             bottleApp.slider();
         })
-    }
-    
+}
+
 // get userLocation from form on submit
 bottleApp.userLocation = () => {
 
@@ -48,9 +48,12 @@ bottleApp.userLocation = () => {
             inputEl.value = '';
             bottleApp.getRestaurants(userInput);
         };
+
+        const about = document.querySelector('.about')
+        about.style.visibility = 'hidden';
     }) 
 }
-    
+
 //  display API results on the page with query from userLocation
 bottleApp.displayResults = (dataFromApi) => {
     const ulEl = document.querySelector('ul');
@@ -92,7 +95,6 @@ bottleApp.displayResults = (dataFromApi) => {
         
     })  
 }
-
 
 //Slider to display Results
 bottleApp.slider = () => {
@@ -181,7 +183,7 @@ bottleApp.staffPicks = [
 ]
 
 bottleApp.showSecrets = () => {
-    const bottle = document.querySelector('img');
+    const bottle = document.querySelector('.secret-image');
     bottle.addEventListener('mouseover', (e) => {
         bottle.src = './assets/bottles-logo-full.png';
         bottle.classList.add('animate__animated', 'animate__swing');
@@ -192,7 +194,6 @@ bottleApp.showSecrets = () => {
         bottle.classList.remove('animate__animated', 'animate__swing');
     })
 }
-
 
 // Functions to kick off the setup of the application
 bottleApp.init = () => {

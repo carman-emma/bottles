@@ -1,9 +1,11 @@
 @import 'setup';
 @import 'variables';
+@import 'mixins';
 
 * {
     padding: 0;
     margin: 0;
+    outline: 1px black solid;
 }
 
 html {
@@ -26,18 +28,17 @@ a {
     text-decoration: none;
 }
 
-header {
-    height: 35vh;
-}
+// header {
+//     @include tabletMQ {
+//         margin: 15px;
+//     }
+// }
 
 main {
     height: 35vh;
 }
 
-section {
-    height: 15vh;
-    margin-top: auto;
-}
+
 
 img {
     max-width: 100%;
@@ -49,21 +50,25 @@ h1 {
     margin: 8px;
     text-align: center;
     font-family: $featureFont;
-    font-size: 10rem;
+    font-size: 8rem;
     letter-spacing: 5px;
     color: $background;
     -webkit-text-stroke-width: 1.4px;
     -webkit-text-stroke-color: $darkBlue;
     text-shadow: 4px 4px $darkCoral, 8px 8px $lightCoral;
+    
 }
 
 .about {
     position: absolute;
-    top: 50%;
-    margin-bottom: 5px;
     font-size: 2rem;
     letter-spacing: 1px;
     font-weight: 100;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
 }
 
 legend {
@@ -71,7 +76,7 @@ legend {
 }
 
 input {
-    margin: 10px;
+    margin-top: 5px;
     width: 30vw;
     min-width: 300px;
     padding: 10px;
@@ -79,7 +84,7 @@ input {
     border-radius: 40px;
     border: 1px solid $darkBlue;
     font-family: $secondaryFont;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     letter-spacing: 1px;
     color: $darkBlue;
     background: rgb(217,234,255);
@@ -87,7 +92,7 @@ input {
 
     &::placeholder {
         font-family: $secondaryFont;
-        font-size: 1.8rem;
+        font-size: 1.6rem;
         opacity: 1;
         letter-spacing: 1px;
     }
@@ -111,10 +116,10 @@ button[type='submit'] {
     right: 0;
     margin: 10px auto;
     border-radius: 50%;
-    padding: 15px 30px;
+    padding: 10px 30px;
 
     font-family: $secondaryFont;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     letter-spacing: 1px;
     color: $darkBlue;
 
@@ -145,10 +150,18 @@ button[type='submit'] {
 .slider {
     display: flex;
     position: relative;
-    margin: 5px auto;
-    height: 40vh;
-    width: 80vh;
-    border: 1px solid red;
+    margin: 10px auto;
+    height: 45vh;
+    width: 60vw;
+    outline: 1px solid red;
+
+    @include tabletMQ {
+        width: 80vw;
+    }
+
+    @include smTabletMQ {
+        width: 95vw;
+    }
 }
 
 .slider-inner {
@@ -166,6 +179,10 @@ button[type='submit'] {
     width: 33%;
     border: none;
     background-color: transparent;
+
+    @include phoneMQ {
+
+    }
 }
 
 .go-back {
@@ -186,6 +203,10 @@ li {
     padding: 20px 50px;
     background-color: $darkest;
     opacity: 0;
+
+    @include phoneMQ {
+        width: 85%;
+    }
 }
 
 li.prev,
@@ -193,6 +214,10 @@ li.next {
     z-index: 10;
     opacity: 0.25;
     scale: 0.7;
+
+    @include phoneMQ {
+        opacity: 0;
+    }
 }
 
 li.prev {
@@ -256,6 +281,15 @@ li:nth-child(6n+6) {
     }
 }
 
+section {
+    height: 15vh;
+    margin-top: auto;
+
+    // @include tabletMQ {
+    //     margin-top: 30px;
+    // }
+}
+
 .secret-button {
     margin-bottom: 10px;
     max-width: 100px;
@@ -263,7 +297,7 @@ li:nth-child(6n+6) {
     transition: scale 0.5s ease;
 
     &:hover {
-        scale: 1.5;
+        scale: 1.1;
         cursor: url('../assets/sparkles-01.png'), default;
     }
 }
