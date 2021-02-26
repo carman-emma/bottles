@@ -245,6 +245,20 @@ html {
 }
 
 body {
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   background-color: #e3f6ff;
   font-family: "Roboto Condensed", sans-serif;
   color: #1875d1;
@@ -255,21 +269,17 @@ a {
   text-decoration: none;
 }
 
+header {
+  height: 35vh;
+}
+
 main {
-  height: 95vh;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  height: 35vh;
+}
+
+section {
+  height: 15vh;
+  margin-top: auto;
 }
 
 img {
@@ -277,12 +287,6 @@ img {
   -o-object-fit: cover;
      object-fit: cover;
   display: block;
-}
-
-.wrapper {
-  margin: 0 auto;
-  width: 85%;
-  max-width: 1280px;
 }
 
 h1 {
@@ -314,6 +318,12 @@ legend {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 input {
@@ -411,14 +421,18 @@ button[type='submit']:hover {
 }
 
 .slider {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   position: relative;
   margin: 5px auto;
-  height: 100vh;
-  width: 60%;
+  height: 40vh;
+  width: 80vh;
+  border: 1px solid red;
 }
 
 .slider-inner {
-  position: absolute;
+  position: relative;
   width: 100%;
   height: 100%;
   display: -webkit-box;
@@ -474,9 +488,6 @@ li {
       -ms-flex-align: center;
           align-items: center;
   padding: 20px 50px;
-  min-width: 300px;
-  min-height: 300px;
-  max-height: 350px;
   background-color: #03366a;
   opacity: 0;
 }
@@ -556,7 +567,7 @@ li:nth-child(6n+6) {
   font-size: 1.9rem;
 }
 
-.secret {
+.secret-button {
   margin-bottom: 10px;
   max-width: 100px;
   height: auto;
@@ -564,22 +575,21 @@ li:nth-child(6n+6) {
   transition: scale 0.5s ease;
 }
 
-.secret:hover {
+.secret-button:hover {
   scale: 1.5;
   cursor: url("../assets/sparkles-01.png"), default;
 }
 
+.secret-display {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+}
+
 footer {
   height: 5vh;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  text-align: center;
+  padding: 5px;
 }
 
 footer p {
