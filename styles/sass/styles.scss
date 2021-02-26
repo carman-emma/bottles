@@ -5,7 +5,6 @@
 * {
     padding: 0;
     margin: 0;
-    outline: 1px black solid;
 }
 
 html {
@@ -153,10 +152,17 @@ button[type='submit'] {
     margin: 10px auto;
     height: 45vh;
     width: 60vw;
-    outline: 1px solid red;
+
+    @include computerMQ {
+        width: 70vw;
+    }
 
     @include tabletMQ {
         width: 80vw;
+    }
+
+    @include medTabletMQ {
+        width: 85vw;
     }
 
     @include smTabletMQ {
@@ -180,18 +186,32 @@ button[type='submit'] {
     border: none;
     background-color: transparent;
 
-    @include phoneMQ {
+    img {
+        visibility: hidden;
+        position: absolute;
 
+        // @include phoneMQ {
+        //     // visibility: visible;
+        // }
     }
+
 }
 
 .go-back {
-    cursor: url('../assets/arrow-back.png'), default;
+    cursor: url('../assets/comp-arrow-left.png'), default;
+
+    img {
+        left: 20px;
+    }
 }
 
 .go-next {
     right: 0;
-    cursor: url('../assets/arrow-next.png'), default;
+    cursor: url('../assets/comp-arrow-right.png'), default;
+
+    img {
+        right: 20px;
+    }
 }
 
 li {
@@ -203,6 +223,10 @@ li {
     padding: 20px 50px;
     background-color: $darkest;
     opacity: 0;
+
+    @include medTabletMQ {
+        width: 65%;
+    }
 
     @include phoneMQ {
         width: 85%;
@@ -222,10 +246,18 @@ li.next {
 
 li.prev {
     left: 0;
+
+    @include medTabletMQ {
+        left: -40px;
+    }
 }
 
 li.next {
     right: 0;
+
+    @include medTabletMQ {
+        right: -40px;
+    }
 }
 
 li.current {

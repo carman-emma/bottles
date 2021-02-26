@@ -51,6 +51,23 @@ bottleApp.userLocation = () => {
 
         const about = document.querySelector('.about')
         about.style.visibility = 'hidden';
+
+        const mobileButtonBack = document.querySelector('.mobile-back')
+
+        const mobileButtonNext = document.querySelector('.mobile-next')
+
+        function mobileButton () {
+            const media = window.matchMedia('(max-width: 480px)'); 
+            if (media) {
+                mobileButtonBack.style.visibility = 'visible';
+                mobileButtonNext.style.visibility = 'visible';
+            } else {
+                mobileButtonBack.style.visibility = 'hidden';
+                mobileButtonNext.style.visibility = 'hidden';
+            }
+        }
+        mobileButton();
+        console.log(mobileButton);
     }) 
 }
 

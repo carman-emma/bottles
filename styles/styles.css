@@ -238,7 +238,6 @@ html {
 * {
   padding: 0;
   margin: 0;
-  outline: 1px black solid;
 }
 
 html {
@@ -424,12 +423,23 @@ button[type='submit']:hover {
   margin: 10px auto;
   height: 45vh;
   width: 60vw;
-  outline: 1px solid red;
+}
+
+@media screen and (max-width: 1000px) {
+  .slider {
+    width: 70vw;
+  }
 }
 
 @media screen and (max-width: 800px) {
   .slider {
     width: 80vw;
+  }
+}
+
+@media screen and (max-width: 675px) {
+  .slider {
+    width: 85vw;
   }
 }
 
@@ -468,13 +478,27 @@ button[type='submit']:hover {
   background-color: transparent;
 }
 
+.go-back img,
+.go-next img {
+  visibility: hidden;
+  position: absolute;
+}
+
 .go-back {
-  cursor: url("../assets/arrow-back.png"), default;
+  cursor: url("../assets/comp-arrow-left.png"), default;
+}
+
+.go-back img {
+  left: 20px;
 }
 
 .go-next {
   right: 0;
-  cursor: url("../assets/arrow-next.png"), default;
+  cursor: url("../assets/comp-arrow-right.png"), default;
+}
+
+.go-next img {
+  right: 20px;
 }
 
 li {
@@ -498,6 +522,12 @@ li {
   padding: 20px 50px;
   background-color: #03366a;
   opacity: 0;
+}
+
+@media screen and (max-width: 675px) {
+  li {
+    width: 65%;
+  }
 }
 
 @media screen and (max-width: 480px) {
@@ -524,8 +554,20 @@ li.prev {
   left: 0;
 }
 
+@media screen and (max-width: 675px) {
+  li.prev {
+    left: -40px;
+  }
+}
+
 li.next {
   right: 0;
+}
+
+@media screen and (max-width: 675px) {
+  li.next {
+    right: -40px;
+  }
 }
 
 li.current {

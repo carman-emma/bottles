@@ -1,6 +1,18 @@
+@mixin computerMQ {
+    @media screen and (max-width: 1000px) {
+        @content;
+    }
+}
+
 // ipad breakpoint
 @mixin tabletMQ {
     @media screen and (max-width: 800px) {
+        @content;
+    }
+}
+
+@mixin medTabletMQ {
+    @media screen and (max-width: 675px) {
         @content;
     }
 }
