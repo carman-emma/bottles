@@ -210,7 +210,47 @@ bottleApp.showSecrets = () => {
         bottle.src = './assets/bottles-logo-empty.png';
         bottle.classList.remove('animate__animated', 'animate__swing');
     })
+
+    const secretMenu = document.querySelector('.secret-menu')
+
+    for (let key of bottleApp.staffPicks) {
+
+        const shopName = key.name;
+        const address = key.address;
+        const phoneNum = key.phone;
+        const link = key.url;
+
+        const listEl = document.createElement('li');
+
+        listEl.innerHTML += `
+            <h2>${shopName}</h2>
+            <p>${address}</p>
+            <a href="tel:${phoneNum}">${phoneNum}</a>
+            <a href="${link}>"><i class="fas fa-external-link-alt"></i></a>`;
+
+        document.querySelector('.shops').appendChild(listEl);
+
+    }
+
+    bottle.addEventListener('click', () => {
+        secretMenu.classList.toggle('show-secrets');
+        
+        // if (bottle.src === './assets/bottles-logo-empty.png') {
+        //     bottle.src = './assets/bottles-logo-full.png';
+        // } else if (bottle.src === './assets/bottles-logo-full.png') {
+        //     bottle.src = './assets/bottles-logo-empty.png';
+        // }
+
+        // console.log(bottle);
+    })
 }
+
+// 1. on click event listener: bottle changes images toggles class
+// 1.1 secret menu toggles class
+
+// for each of restaurant object, append into <li> append to page
+
+
 
 // Functions to kick off the setup of the application
 bottleApp.init = () => {

@@ -600,11 +600,13 @@ li:nth-child(6n+6) {
   border-radius: 55% 45% 24% 76% / 57% 22% 78% 43%;
 }
 
-.slider-inner {
+.slider-inner,
+.shops {
   color: white;
 }
 
-.slider-inner h2 {
+.slider-inner h2,
+.shops h2 {
   margin-bottom: 23px;
   text-align: center;
   font-family: "Montserrat", sans-serif;
@@ -613,19 +615,23 @@ li:nth-child(6n+6) {
   text-shadow: 0 0 20px #f4ff88;
 }
 
-.slider-inner p {
+.slider-inner p,
+.shops p {
   font-size: 1.7rem;
   padding: 2px;
 }
 
-.slider-inner a {
+.slider-inner a,
+.shops a {
   font-size: 1.7rem;
   padding-top: 15px;
   line-height: 2.2rem;
   color: white;
 }
 
-.slider-inner a:hover, .slider-inner a:focus {
+.slider-inner a:hover, .slider-inner a:focus,
+.shops a:hover,
+.shops a:focus {
   color: #f4ff88;
   font-size: 1.9rem;
 }
@@ -636,11 +642,13 @@ section {
 }
 
 .secret-button {
+  position: relative;
   margin-bottom: 10px;
   max-width: 100px;
   height: auto;
   -webkit-transition: scale 0.5s ease;
   transition: scale 0.5s ease;
+  z-index: 201;
 }
 
 .secret-button:hover {
@@ -648,10 +656,67 @@ section {
   cursor: url("../assets/sparkles-01.png"), default;
 }
 
-.secret-display {
+.secret-menu {
   height: 100vh;
   width: 100vw;
   position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background-color: rgba(23, 61, 105, 0.8);
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+
+.secret-menu.show-secrets {
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+
+.secret-menu.show-secrets li {
+  opacity: 100%;
+}
+
+.secret-menu .shops {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  max-width: 75%;
+  margin: 20px auto;
+}
+
+.secret-menu li {
+  position: static;
+  height: 250px;
+  width: 250px;
+  margin: 5px;
+  -webkit-transition-delay: 0.7s;
+          transition-delay: 0.7s;
+  -webkit-transition: all 0.5s ease-in;
+  transition: all 0.5s ease-in;
+}
+
+.secret-menu li h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.secret-menu li a {
+  padding-top: 5px;
 }
 
 footer {
