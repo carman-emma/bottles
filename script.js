@@ -205,7 +205,7 @@ bottleApp.secrets = () => {
     bottle.addEventListener('mouseover', fillBottle);
     bottle.addEventListener('mouseout', emptyBottle);
 
-    bottleApp.secretsReveal = false;
+    // bottleApp.secretsReveal = false;
 
     function handleOpen() {
             // bottleApp.secretsReveal = !bottleApp.secretsReveal;
@@ -248,11 +248,17 @@ bottleApp.secrets = () => {
     }
 
     function emptyBottle() {
-        if (bottleApp.secretReveal = true) {
-            return;
+        // if (bottleApp.secretReveal = true) {
+        //     return;
+        // }
+
+        const secretMenuClass = secretMenu.classList;
+
+        if (secretMenu.classList.contains('show-secrets')) {
+            return
         }
-        bottle.src = './assets/bottles-logo-empty.png';
-        bottle.classList.remove('animate__animated', 'animate__swing');
+            bottle.src = './assets/bottles-logo-empty.png';
+            bottle.classList.remove('animate__animated', 'animate__swing');
     }
 
 
