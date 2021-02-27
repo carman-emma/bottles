@@ -27,17 +27,9 @@ a {
     text-decoration: none;
 }
 
-// header {
-//     @include tabletMQ {
-//         margin: 15px;
-//     }
-// }
-
 main {
     height: 35vh;
 }
-
-
 
 img {
     max-width: 100%;
@@ -87,7 +79,13 @@ input {
     letter-spacing: 1px;
     color: $darkBlue;
     background: rgb(217,234,255);
-    background: linear-gradient(337deg, rgba(217,234,255,0.7) 0%, rgba(255,255,255,0.8) 30%, rgba(217,234,255,0.7) 49%, rgba(181,215,255,0.7) 61%, rgba(255,255,255,0.8) 82%, rgba(217,234,255,0.7) 100%); 
+    background: linear-gradient(337deg,
+        rgba(217,234,255,0.7) 0%,
+        rgba(255,255,255,0.8) 30%,
+        rgba(217,234,255,0.7) 49%,
+        rgba(181,215,255,0.7) 61%,
+        rgba(255,255,255,0.8) 82%,
+        rgba(217,234,255,0.7) 100%); 
 
     &::placeholder {
         font-family: $secondaryFont;
@@ -98,7 +96,13 @@ input {
 
     &:hover {
         background: rgb(217,234,255);
-        background: linear-gradient(337deg, rgba(217,234,255,0.4) 0%, rgba(255,255,255,0.5) 30%, rgba(217,234,255,0.5) 49%, rgba(181,215,255,0.4) 61%, rgba(255,255,255,0.4) 82%, rgba(217,234,255,0.5) 100%); 
+        background: linear-gradient(337deg, 
+            rgba(217,234,255,0.4) 0%, 
+            rgba(255,255,255,0.5) 30%, 
+            rgba(217,234,255,0.5) 49%, 
+            rgba(181,215,255,0.4) 61%, 
+            rgba(255,255,255,0.4) 82%, 
+            rgba(217,234,255,0.5) 100%); 
         outline: none;
         @include glow;
     }
@@ -189,10 +193,6 @@ button[type='submit'] {
     img {
         visibility: hidden;
         position: absolute;
-
-        // @include phoneMQ {
-        //     // visibility: visible;
-        // }
     }
 
 }
@@ -317,10 +317,6 @@ li:nth-child(6n+6) {
 section {
     height: 15vh;
     margin-top: auto;
-
-    // @include tabletMQ {
-    //     margin-top: 30px;
-    // }
 }
 
 .secret-button {
@@ -335,12 +331,6 @@ section {
         scale: 1.1;
         cursor: url('../assets/sparkles-01.png'), default;
     }
-
-    // img {
-    //     z-index: 200;
-        
-    // }
-
 }
 
 .secret-menu {
@@ -445,7 +435,6 @@ section {
     max-width: 600px;
     margin: 0 auto;
     margin-top: auto;
-    // outline: 1px solid red;
 
     p {
         position: absolute; 
@@ -460,9 +449,6 @@ section {
         0 0 8rem $neon,
         0 0 10rem $neon;
         animation: flicker 4s infinite;
-
-
-        // outline: 1px solid red;
 
         &:first-child {
             left: 90px;
@@ -485,13 +471,7 @@ section {
             0 0 6rem $neon,
             0 0 8rem $neon,
             0 0 10rem $neon;
-        // box-shadow:
-        //     0 0 .5rem #fff,
-        //     inset 0 0 .5rem #fff,
-        //     0 0 2rem #08f,
-        //     inset 0 0 2rem #08f,
-        //     0 0 4rem #08f,
-        //     inset 0 0 4rem #08f;
+
     }
     20%, 24%, 55% {
         text-shadow: none;

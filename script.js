@@ -70,11 +70,10 @@ bottleApp.userLocation = () => {
             }
         }
         mobileButton();
-        console.log(mobileButton);
     }) 
 }
 
-//  display API results on the page with query from userLocation
+// display API results on the page with query from userLocation
 bottleApp.displayResults = (dataFromApi) => {
     const ulEl = document.querySelector('ul');
 
@@ -112,14 +111,11 @@ bottleApp.displayResults = (dataFromApi) => {
         } else if (index === 5) {
             liEl.classList.add('prev');
         }
-        
     })  
 }
 
-//Slider to display Results
+// slider to display Results
 bottleApp.slider = () => {
-    const slider = document.querySelector('.slider');
-    
     let prev;
     let current;
     let next;
@@ -162,7 +158,7 @@ bottleApp.slider = () => {
     startSlider();
 }
 
-// Secret pick bottle shop objects
+// secret pick bottle shop objects
 bottleApp.staffPicks = [
     tommyWine = {
         name: `Tommy's Wine Bar`,
@@ -202,12 +198,12 @@ bottleApp.staffPicks = [
     }
 ]
 
+// reveal secrets on command
 bottleApp.secrets = () => {
     const bottle = document.querySelector('.secret-image');
     
     bottle.addEventListener('mouseover', fillBottle);
     bottle.addEventListener('mouseout', emptyBottle);
-
 
     function handleOpen() {
 
@@ -226,7 +222,6 @@ bottleApp.secrets = () => {
         
     bottle.addEventListener('click', handleOpen);
 
-
     function fillBottle() {
         bottle.src = './assets/bottles-logo-full.png';
         bottle.classList.add('animate__animated', 'animate__swing');
@@ -240,7 +235,6 @@ bottleApp.secrets = () => {
             bottle.src = './assets/bottles-logo-empty.png';
             bottle.classList.remove('animate__animated', 'animate__swing');
     }
-
 
     const secretMenu = document.querySelector('.secret-menu')
 
@@ -262,19 +256,11 @@ bottleApp.secrets = () => {
             <a href="${link}>"><i class="fas fa-external-link-alt"></i></a>`;
 
         document.querySelector('.shops').appendChild(listEl);
-
     }
 
 }
 
-// 1. on click event listener: bottle changes images toggles class
-// 1.1 secret menu toggles class
-
-// for each of restaurant object, append into <li> append to page
-
-
-
-// Functions to kick off the setup of the application
+// functions to kick off the setup of the application
 bottleApp.init = () => {
     bottleApp.secrets();
     bottleApp.userLocation();  
