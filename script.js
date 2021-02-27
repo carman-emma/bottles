@@ -52,6 +52,8 @@ bottleApp.userLocation = () => {
             bottleApp.getRestaurants(userInput);
         };
 
+        // form.reset();
+
         const about = document.querySelector('.about')
         about.style.visibility = 'hidden';
 
@@ -105,17 +107,19 @@ bottleApp.displayResults = (dataFromApi) => {
         liEl.append(h2, pDistance, pPhone, pAddress, yelpLink);
         
         if (index === 0) {
-            liEl.classList.add('current');
+            liEl.setAttribute('class', 'current');
         } else if (index === 1) {
-            liEl.classList.add('next');
+            liEl.setAttribute('class', 'next');
         } else if (index === 5) {
-            liEl.classList.add('prev');
-        }
+            liEl.setAttribute('class', 'prev');
+        } 
+        console.log(index);
     })  
 }
 
 // slider to display Results
 bottleApp.slider = () => {
+    const slider = document.querySelector('.slider');
     let prev;
     let current;
     let next;
@@ -257,7 +261,6 @@ bottleApp.secrets = () => {
 
         document.querySelector('.shops').appendChild(listEl);
     }
-
 }
 
 // functions to kick off the setup of the application
