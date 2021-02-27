@@ -27,8 +27,9 @@ bottleApp.getRestaurants = (userAddress) => {
             bottleApp.displayResults(businesses);
             bottleApp.slider();
         })
-        .catch(() => {
+        .catch((err) => {
             alert(`Sorry we can't find bottles right now. Please try again later!`);
+            console.log(err)
         })
 }
 
@@ -36,9 +37,12 @@ bottleApp.getRestaurants = (userAddress) => {
 bottleApp.userLocation = () => {
 
     const form = document.querySelector('form');
+    const resetButton = document.querySelector('#reset');
     
     form.addEventListener('submit', (e) => {
         e.preventDefault();
+        form.style.display = 'none';
+        resetButton.style.display = 'block';
 
         const ulEl = document.querySelector('ul');
         ulEl.innerHTML = '';
@@ -46,13 +50,11 @@ bottleApp.userLocation = () => {
         const inputEl = document.querySelector('input');
     
         const userInput = inputEl.value;
-        
+
         if(userInput.trim()) {
             inputEl.value = '';
             bottleApp.getRestaurants(userInput);
         };
-
-        // form.reset();
 
         const about = document.querySelector('.about')
         about.style.visibility = 'hidden';
@@ -73,7 +75,12 @@ bottleApp.userLocation = () => {
         }
         mobileButton();
     }) 
+
+    resetButton.addEventListener('click', () => {
+        location.reload();
+    })
 }
+
 
 // display API results on the page with query from userLocation
 bottleApp.displayResults = (dataFromApi) => {
@@ -113,6 +120,7 @@ bottleApp.displayResults = (dataFromApi) => {
         } else if (index === 5) {
             liEl.setAttribute('class', 'prev');
         } 
+
         console.log(index);
     })  
 }

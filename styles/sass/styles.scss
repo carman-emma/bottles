@@ -113,7 +113,8 @@ input {
     }
 }
 
-button[type='submit'] {
+button[type='submit'],
+button.reset {
     position: relative;
     top: 0;
     right: 0;
@@ -149,6 +150,9 @@ button[type='submit'] {
     }
 }
 
+button.reset {
+    display: none;
+}
 
 .slider {
     display: flex;
@@ -292,7 +296,7 @@ li:nth-child(6n+6) {
         margin-bottom: 23px;
         text-align: center;
         font-family: $featureFont;
-        font-size: 3.2rem;
+        font-size: 3.1rem;
         font-weight: 800;   
         text-shadow: 0 0 20px $neon;  
     }
