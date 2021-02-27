@@ -241,7 +241,7 @@ bottleApp.showSecrets = () => {
         //     bottle.src = './assets/bottles-logo-empty.png';
         // }
 
-        // console.log(bottle);
+        console.log(bottle);
     })
 }
 
