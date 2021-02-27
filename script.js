@@ -188,25 +188,25 @@ bottleApp.staffPicks = [
         name: 'Grape Glass',
         phone: '+1 416-546-2151',
         address: '1247 Dundas St West',
-        url: 'https://www.grapewitches.com/grape-glass'
+        url: 'https://www.instagram.com/grapewitches/?hl=en'
     },
     donnas = {
         name: `Donna's`,
         phone: '+1 416-536-1414',
         address: '827 Lansdowne Ave',
-        url: 'https://donnas.ca/'
+        url: 'https://www.instagram.com/donnas.to/?hl=en'
     },
     paradiseGrapevine = {
         name: 'Paradise Grapevine',
         phone: '+1 416-536-7178',
         address: '841 Bloor St West',
-        url: 'https://www.paradisegrapevine.com/'
+        url: 'https://www.instagram.com/paradisegrapevine/?hl=en'
     },
     bernhardts = {
         name: `Bernhardt's`,
         phone: `+1 416-530-0008`,
         address: '202 Dovercourt Rd',
-        url: 'http://www.bernhardtstoronto.com'
+        url: 'https://www.instagram.com/bernhardtstoronto/?hl=en'
     }
 ]
 
@@ -265,7 +265,7 @@ bottleApp.secrets = () => {
             <p>${address}</p>
             <a href="tel:${phoneNum}">${phoneNum}</a>
             </div>
-            <a href="${link}>"><i class="fas fa-external-link-alt"></i></a>`;
+            <a href="${link}>"><i class="fab fa-instagram"></i></a>`;
 
         document.querySelector('.shops').appendChild(listEl);
     }
