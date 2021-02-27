@@ -794,23 +794,47 @@ section {
   max-width: 600px;
   margin: 0 auto;
   margin-top: auto;
-  outline: 1px solid red;
 }
 
 .secret-menu > div p {
   position: absolute;
   bottom: 0px;
-  outline: 1px solid red;
+  color: white;
+  text-shadow: -0.2rem -0.2rem 0.7rem #f4ff88, 0.2rem 0.2rem 0.7rem #f4ff88, 0 0 2rem #f4ff88, 0 0 4rem #f4ff88, 0 0 6rem #f4ff88, 0 0 8rem #f4ff88, 0 0 10rem #f4ff88;
+  -webkit-animation: flicker 4s infinite;
+          animation: flicker 4s infinite;
 }
 
 .secret-menu > div p:first-child {
-  left: 0;
+  left: 90px;
   bottom: -80px;
 }
 
 .secret-menu > div p:last-child {
-  right: 0;
+  right: 80px;
   bottom: -80px;
+}
+
+@-webkit-keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    text-shadow: -0.2rem -0.2rem 1rem #fff, 0.2rem 0.2rem 1rem #fff, 0 0 2rem #f4ff88, 0 0 4rem #f4ff88, 0 0 6rem #f4ff88, 0 0 8rem #f4ff88, 0 0 10rem #f4ff88;
+  }
+  20%, 24%, 55% {
+    text-shadow: none;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+  }
+}
+
+@keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    text-shadow: -0.2rem -0.2rem 1rem #fff, 0.2rem 0.2rem 1rem #fff, 0 0 2rem #f4ff88, 0 0 4rem #f4ff88, 0 0 6rem #f4ff88, 0 0 8rem #f4ff88, 0 0 10rem #f4ff88;
+  }
+  20%, 24%, 55% {
+    text-shadow: none;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+  }
 }
 
 footer {

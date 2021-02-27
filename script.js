@@ -27,6 +27,9 @@ bottleApp.getRestaurants = (userAddress) => {
             bottleApp.displayResults(businesses);
             bottleApp.slider();
         })
+        .catch(() => {
+            alert(`Sorry we can't find bottles right now. Please try again later!`);
+        })
 }
 
 // get userLocation from form on submit
@@ -58,7 +61,7 @@ bottleApp.userLocation = () => {
 
         function mobileButton () {
             const media = window.matchMedia('(max-width: 480px)'); 
-            if (media) {
+            if (media.matches) {
                 mobileButtonBack.style.visibility = 'visible';
                 mobileButtonNext.style.visibility = 'visible';
             } else {
@@ -205,23 +208,17 @@ bottleApp.secrets = () => {
     bottle.addEventListener('mouseover', fillBottle);
     bottle.addEventListener('mouseout', emptyBottle);
 
-    // bottleApp.secretsReveal = false;
 
     function handleOpen() {
-            // bottleApp.secretsReveal = !bottleApp.secretsReveal;
+
             secretMenu.classList.toggle('show-secrets');
             
-            if (bottle.src === './assets/bottles-logo-empty.png' && bottleApp.secretsReveal === false) {
+            if (bottle.src === './assets/bottles-logo-empty.png') {
                 bottle.src = './assets/bottles-logo-full.png';
-                bottleApp.secretsReveal = true;
                 
-                // bottle.removeEventListener('mouseover', fillBottle);
-                // bottle.removeEventListener('mouseout', emptyBottle);
             }  else if (bottle.src === './assets/bottles-logo-full.png') {
                 bottle.src = './assets/bottles-logo-empty.png';
-                // bottleApp.secretsReveal = false;
-                // bottle.addEventListener('mouseover', fillBottle);
-                // bottle.addEventListener('mouseout', emptyBottle);
+                
                 fillBottle();
                 emptyBottle();
             }
@@ -229,18 +226,6 @@ bottleApp.secrets = () => {
         
     bottle.addEventListener('click', handleOpen);
 
-    // function handleClose() {
-    //     secretMenu.classList.remove('show-secrets');
-
-    //     if (bottle.src === './assets/bottles-logo-full.png') {
-    //             bottle.src = './assets/bottles-logo-empty.png';
-    //         } 
-        
-    //         bottle.addEventListener('mouseover', fillBottle);
-    //         bottle.addEventListener('mouseout', emptyBottle);
-    // }
-
-    // bottle.addEventListener('click', handleClose);
 
     function fillBottle() {
         bottle.src = './assets/bottles-logo-full.png';
@@ -248,14 +233,9 @@ bottleApp.secrets = () => {
     }
 
     function emptyBottle() {
-        // if (bottleApp.secretReveal = true) {
-        //     return;
-        // }
-
-        const secretMenuClass = secretMenu.classList;
 
         if (secretMenu.classList.contains('show-secrets')) {
-            return
+            return;
         }
             bottle.src = './assets/bottles-logo-empty.png';
             bottle.classList.remove('animate__animated', 'animate__swing');
