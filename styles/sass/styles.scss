@@ -344,6 +344,8 @@ section {
 }
 
 .secret-menu {
+    display: none;
+    overflow: hidden;
     height: 100vh;
     width: 100vw;
     position: absolute;
@@ -357,7 +359,7 @@ section {
     
     &.show-secrets {
         transform: translateY(0);
-
+        display: block;
         li {
             opacity: 100%;
         }
@@ -369,15 +371,22 @@ section {
         flex-wrap: wrap;
         justify-content: space-between;
         align-items: center;
-        max-width: 75%;
+        width: 75vw;
         margin: 20px auto;
-        
+
+        @include computerMQ {
+            width: 90vw;
+        }
+
+        @include tabletMQ {
+            height: 75vh;
+        }
     }
     
     li {
         position: static;
+        width: calc(33% - 10px);
         height: 250px;
-        width: 250px;
         margin: 5px;
         transition-delay: 0.7s;
         transition: all 0.5s ease-in;
@@ -386,15 +395,76 @@ section {
         h2 {
             font-size: 2.5rem;
             margin-bottom: 10px;
+
+            @include medTabletMQ {
+                font-size: 2rem;
+            }
+
+            @include phoneMQ {
+                font-size: 1.8rem;
+            }
+        }
+
+        p {
+            @include smTabletMQ {
+                font-size :1.6rem;
+            }
         }
 
         a {
             padding-top: 5px;
+
+            @include smTabletMQ {
+                font-size: 1.6rem;
+            }
+        }
+
+        @include tabletMQ {
+            width: 45%;
+            height: auto;
+        }
+        
+        @include smTabletMQ {
+            padding: 20px 20px;
+        }
+
+        @include phoneMQ {
+            width: 100%;
+            padding: 15px 10px;
+            border-radius: 0px;
+            flex-direction: row;
+            justify-content: space-between;
+            margin: 1px;
         }
     }
 }
 
+.secret-menu > div {
+    position: relative;
+    font-size: calc(5rem + 2vw);
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+    margin-top: auto;
+    outline: 1px solid red;
+    // display: flex;
+    // justify-content: space-around;
 
+    p {
+        position: absolute; 
+        bottom: 0px;
+        outline: 1px solid red;
+
+        &:first-child {
+            left: 0;
+            bottom: -80px;
+        }
+        &:last-child {
+            right: 0;
+            bottom: -80px;
+        }
+    }
+}
 
 footer {
     height: 5vh;

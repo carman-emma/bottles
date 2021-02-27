@@ -425,7 +425,7 @@ button[type='submit']:hover {
   width: 60vw;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1050px) {
   .slider {
     width: 70vw;
   }
@@ -657,6 +657,8 @@ section {
 }
 
 .secret-menu {
+  display: none;
+  overflow: hidden;
   height: 100vh;
   width: 100vw;
   position: absolute;
@@ -673,6 +675,7 @@ section {
 .secret-menu.show-secrets {
   -webkit-transform: translateY(0);
           transform: translateY(0);
+  display: block;
 }
 
 .secret-menu.show-secrets li {
@@ -695,14 +698,26 @@ section {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  max-width: 75%;
+  width: 75vw;
   margin: 20px auto;
+}
+
+@media screen and (max-width: 1050px) {
+  .secret-menu .shops {
+    width: 90vw;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .secret-menu .shops {
+    height: 75vh;
+  }
 }
 
 .secret-menu li {
   position: static;
+  width: calc(33% - 10px);
   height: 250px;
-  width: 250px;
   margin: 5px;
   -webkit-transition-delay: 0.7s;
           transition-delay: 0.7s;
@@ -715,8 +730,87 @@ section {
   margin-bottom: 10px;
 }
 
+@media screen and (max-width: 675px) {
+  .secret-menu li h2 {
+    font-size: 2rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .secret-menu li h2 {
+    font-size: 1.8rem;
+  }
+}
+
+@media screen and (max-width: 565px) {
+  .secret-menu li p {
+    font-size: 1.6rem;
+  }
+}
+
 .secret-menu li a {
   padding-top: 5px;
+}
+
+@media screen and (max-width: 565px) {
+  .secret-menu li a {
+    font-size: 1.6rem;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .secret-menu li {
+    width: 45%;
+    height: auto;
+  }
+}
+
+@media screen and (max-width: 565px) {
+  .secret-menu li {
+    padding: 20px 20px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .secret-menu li {
+    width: 100%;
+    padding: 15px 10px;
+    border-radius: 0px;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    margin: 1px;
+  }
+}
+
+.secret-menu > div {
+  position: relative;
+  font-size: calc(5rem + 2vw);
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+  margin-top: auto;
+  outline: 1px solid red;
+}
+
+.secret-menu > div p {
+  position: absolute;
+  bottom: 0px;
+  outline: 1px solid red;
+}
+
+.secret-menu > div p:first-child {
+  left: 0;
+  bottom: -80px;
+}
+
+.secret-menu > div p:last-child {
+  right: 0;
+  bottom: -80px;
 }
 
 footer {

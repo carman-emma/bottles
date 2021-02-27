@@ -199,17 +199,62 @@ bottleApp.staffPicks = [
     }
 ]
 
-bottleApp.showSecrets = () => {
+bottleApp.secrets = () => {
     const bottle = document.querySelector('.secret-image');
-    bottle.addEventListener('mouseover', (e) => {
+    
+    bottle.addEventListener('mouseover', fillBottle);
+    bottle.addEventListener('mouseout', emptyBottle);
+
+    bottleApp.secretsReveal = false;
+
+    function handleOpen() {
+            // bottleApp.secretsReveal = !bottleApp.secretsReveal;
+            secretMenu.classList.toggle('show-secrets');
+            
+            if (bottle.src === './assets/bottles-logo-empty.png' && bottleApp.secretsReveal === false) {
+                bottle.src = './assets/bottles-logo-full.png';
+                bottleApp.secretsReveal = true;
+                
+                // bottle.removeEventListener('mouseover', fillBottle);
+                // bottle.removeEventListener('mouseout', emptyBottle);
+            }  else if (bottle.src === './assets/bottles-logo-full.png') {
+                bottle.src = './assets/bottles-logo-empty.png';
+                // bottleApp.secretsReveal = false;
+                // bottle.addEventListener('mouseover', fillBottle);
+                // bottle.addEventListener('mouseout', emptyBottle);
+                fillBottle();
+                emptyBottle();
+            }
+        }
+        
+    bottle.addEventListener('click', handleOpen);
+
+    // function handleClose() {
+    //     secretMenu.classList.remove('show-secrets');
+
+    //     if (bottle.src === './assets/bottles-logo-full.png') {
+    //             bottle.src = './assets/bottles-logo-empty.png';
+    //         } 
+        
+    //         bottle.addEventListener('mouseover', fillBottle);
+    //         bottle.addEventListener('mouseout', emptyBottle);
+    // }
+
+    // bottle.addEventListener('click', handleClose);
+
+    function fillBottle() {
         bottle.src = './assets/bottles-logo-full.png';
         bottle.classList.add('animate__animated', 'animate__swing');
-    })
+    }
 
-    bottle.addEventListener('mouseout', (e) => {
+    function emptyBottle() {
+        if (bottleApp.secretReveal = true) {
+            return;
+        }
         bottle.src = './assets/bottles-logo-empty.png';
         bottle.classList.remove('animate__animated', 'animate__swing');
-    })
+    }
+
 
     const secretMenu = document.querySelector('.secret-menu')
 
@@ -224,25 +269,16 @@ bottleApp.showSecrets = () => {
 
         listEl.innerHTML += `
             <h2>${shopName}</h2>
+            <div>
             <p>${address}</p>
             <a href="tel:${phoneNum}">${phoneNum}</a>
+            </div>
             <a href="${link}>"><i class="fas fa-external-link-alt"></i></a>`;
 
         document.querySelector('.shops').appendChild(listEl);
 
     }
 
-    bottle.addEventListener('click', () => {
-        secretMenu.classList.toggle('show-secrets');
-        
-        // if (bottle.src === './assets/bottles-logo-empty.png') {
-        //     bottle.src = './assets/bottles-logo-full.png';
-        // } else if (bottle.src === './assets/bottles-logo-full.png') {
-        //     bottle.src = './assets/bottles-logo-empty.png';
-        // }
-
-        console.log(bottle);
-    })
 }
 
 // 1. on click event listener: bottle changes images toggles class
@@ -254,7 +290,7 @@ bottleApp.showSecrets = () => {
 
 // Functions to kick off the setup of the application
 bottleApp.init = () => {
-    bottleApp.showSecrets();
+    bottleApp.secrets();
     bottleApp.userLocation();  
 }
 
