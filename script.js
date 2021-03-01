@@ -29,7 +29,6 @@ bottleApp.getRestaurants = (userAddress) => {
         })
         .catch((err) => {
             alert(`Sorry we can't find bottles right now. Please try again later!`);
-            console.log(err)
         })
 }
 
@@ -120,8 +119,6 @@ bottleApp.displayResults = (dataFromApi) => {
         } else if (index === 5) {
             liEl.setAttribute('class', 'prev');
         } 
-
-        console.log(index);
     })  
 }
 
@@ -162,11 +159,19 @@ bottleApp.slider = () => {
 
     addClasses();   
 
+    
+}
+
+prevButton.addEventListener('click', () => move('back'));
+nextButton.addEventListener('click', move);
+
+document.addEventListener('keyup', (e) => {
+    if (e.key === 'ArrowLeft') {
+        move('back');
+    } else if (e.key === 'ArrowRight') {
+        move();
     }
-
-    prevButton.addEventListener('click', () => move('back'));
-    nextButton.addEventListener('click', move);
-
+})
     startSlider();
 }
 
@@ -223,6 +228,7 @@ bottleApp.secrets = () => {
             
             if (bottle.src === './assets/bottles-logo-empty.png') {
                 bottle.src = './assets/bottles-logo-full.png';
+                bottle.setTabIndex(1);
                 
             }  else if (bottle.src === './assets/bottles-logo-full.png') {
                 bottle.src = './assets/bottles-logo-empty.png';
@@ -231,7 +237,15 @@ bottleApp.secrets = () => {
                 emptyBottle();
             }
         }
-        
+
+    bottle.addEventListener('focusin', fillBottle);
+    bottle.addEventListener('focusout', emptyBottle);
+    bottle.addEventListener('keyup', (e) => {
+        if (e.key === 'Enter') {
+            handleOpen();
+        }
+    });
+    
     bottle.addEventListener('click', handleOpen);
 
     function fillBottle() {
