@@ -7,7 +7,7 @@ bottleApp.apiKey = 'Bearer JZYgjDAWC3xGXOVGoquhJgKezVKcCSmnyM5CP-5t0TwLcAjVQGNuG
 
 //API call with queries 
 bottleApp.getRestaurants = (userAddress) => {
-    const url = new URL('http://proxy.hackeryou.com');
+    const url = new URL('https://proxy.hackeryou.com');
     url.search = new URLSearchParams({
         reqUrl: bottleApp.apiUrl,
         'params[key]': bottleApp.apiKey,
